@@ -2,12 +2,10 @@ require_relative 'lib/film'
 require_relative 'lib/film_collection'
 require_relative 'lib/parser'
 
-NUMBER_OF_MOVIES = 20
+NUMBER_OF_MOVIES = 7
 
-puts "Hello there!"
-puts "Lets check how well you know movie directors"
-puts "It's movie night!"
-puts "Choose the director whose movie you would like to watch:"
+puts "Привет!"
+puts "Давай выберем интересный фильм"
 
 collection = FilmCollection.new(Parser.from_imdb.shuffle.first(NUMBER_OF_MOVIES))
 
@@ -17,10 +15,10 @@ end
 
 director_choice = 0
 until director_choice.between?(1, collection.directors_number)
-  puts "Movie of which director would you like to watch?"
+  puts "Выбери режиссера, чей фильм ты бы хотел посмотреть:"
   director_choice = STDIN.gets.to_i
 end
 
 chosen_movie = collection.movie_choice(collection.directors[director_choice - 1])
 
-puts "And today I recommend this movie: #{chosen_movie}"
+puts "Сегодня советую посмотреть фильм: #{chosen_movie}"
